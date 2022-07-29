@@ -1,0 +1,19 @@
+use yzl; /* 使用yzl这个database */
+
+drop table if exists student_info; /* 如果表student_info存在则删除表student_info */
+
+CREATE TABLE `student_info` ( /* 创建表student_info */
+`id` int(11) NOT NULL auto_increment,
+`stu_id` int(11) DEFAULT NULL COMMENT '学生ID',
+`stu_name` varchar(30) DEFAULT NULL COMMENT '学生姓名',
+`stu_class` varchar(30) DEFAULT NULL COMMENT '学生班级',
+`stu_score` int(11) DEFAULT NULL COMMENT '学生分数',
+`create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '记录创建时间',
+`update_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE
+CURRENT_TIMESTAMP
+COMMENT '记录更新时间',
+PRIMARY KEY (`id`),
+KEY `idx_stu_id` (`stu_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+insert into student_info(stu_id,stu_name,stu_class,stu_score) values(1,'zhang','1班',80),(2,'wang','1班',90),(3,'zhao','2班',80),(4,'liu','2班',86),(5,'duan','2班',88);
